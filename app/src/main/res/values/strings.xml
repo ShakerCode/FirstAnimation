@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FirstAnimation</string>
+    <string name="welcome">Welcome</string>
+    <string name="resetButton">Reset</string>
+    <string name="randomButton">Randomize</string>
+    <string name="circleButton">Add circle</string>
+</resources>
