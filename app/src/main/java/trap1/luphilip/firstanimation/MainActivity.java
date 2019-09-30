@@ -2,6 +2,7 @@ package trap1.luphilip.firstanimation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         randomButton = findViewById(R.id.randomButton);
         resetButton = findViewById(R.id.resetButton);
         drawView = findViewById(R.id.drawView);
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         randomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                DrawView.update();
             }
         });
 
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 DrawView.addSprite();
             }
         });
+
 
     }
 

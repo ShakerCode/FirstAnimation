@@ -5,19 +5,26 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
+import java.util.Random;
+
 class Sprite extends RectF {
+    private Random rand = new Random();
     private int x;
     private int y;
     private int dx;
     private int dy;
+    private Paint paint;
     private int randomSpeed = (int) (Math.random() * 29 + 1);
     private int randomDirection = (int) (Math.random() * 4 + 1);
+    private int randomColor = Color.rgb(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
+//    private int randomPosition = (int) (Math.random() * 4 + 1);
 
-    public Sprite(int x, int y, int dx, int dy) {
+    public Sprite(int x, int y, int dx, int dy, Paint paint) {
         this.x = x;
         this.y = y;
         this.dx = dx;
         this.dy = dy;
+        this.paint = paint;
     }
 
     public Sprite() {
@@ -25,10 +32,10 @@ class Sprite extends RectF {
         this.y = 0;
         this.dx = 10;
         this.dy = 10;
+        this.paint = new Paint();
     }
     public void draw(Canvas canvas) {
-        int randomPosition = (int) (Math.random() * 4 + 1);
-        canvas.drawCircle(x, y, 100, new Paint());
+        canvas.drawCircle(x, y, 100, this.paint);
         y+=dy;
         x+=dx;
         if(x>=canvas.getWidth()) {
@@ -45,6 +52,7 @@ class Sprite extends RectF {
         }
     }
     public void update() {
+        this.paint.setColor(randomColor);
         switch(randomDirection) {
             case 1:
                 this.dx = randomSpeed;
@@ -61,6 +69,7 @@ class Sprite extends RectF {
         }
         randomSpeed = (int) (Math.random() * 29 + 1);
         randomDirection = (int) (Math.random() * 4 + 1);
+        randomColor = Color.rgb(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
     }
 
 }

@@ -14,12 +14,7 @@ import java.util.HashMap;
 
 public class DrawView extends View {
     Paint paint=new Paint();
-    int y=0,dY=10;//set initial y position and vertical speed
-    int x=0,dX=10;
-    private int buffer = 10;
     public static ArrayList<Sprite> sprites= new ArrayList<>();
-    //    public HashMap<Integer, Integer, Integer, Integer>
-    Canvas c ;
     public DrawView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
@@ -34,12 +29,17 @@ public class DrawView extends View {
         //draw circle
 
         for(Sprite s:sprites){
-//            x.update();
             s.draw(canvas);
         }
 
         invalidate();  //redraws screen, invokes onDraw()
 
+    }
+
+    public static void update() {
+        for(Sprite s: sprites) {
+            s.update();
+        }
     }
 
     public static void addSprite(){
