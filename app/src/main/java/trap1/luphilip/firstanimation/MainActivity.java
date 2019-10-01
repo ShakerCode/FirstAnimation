@@ -36,14 +36,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        resetButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Canvas canvas = new Canvas();
-//                drawView.draw(canvas);
-//
-//            }
-//        });
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DrawView.clear();
+            }
+        });
 
         circleButton.setOnClickListener(new View.OnClickListener() {
             @Override

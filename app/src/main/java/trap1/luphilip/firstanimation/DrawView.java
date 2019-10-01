@@ -1,6 +1,8 @@
 package trap1.luphilip.firstanimation;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,10 +12,10 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DrawView extends View {
     Paint paint=new Paint();
+    public Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.space_background);
     public static ArrayList<Sprite> sprites= new ArrayList<>();
     public DrawView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -24,9 +26,6 @@ public class DrawView extends View {
         super.onDraw(canvas);
 
         paint.setColor(Color.GRAY);//set paint to gray
-        canvas.drawRect(getLeft(),0,getRight(),getBottom(),paint);//paint background gray
-        paint.setColor(Color.BLUE);//set paint to red
-        //draw circle
 
         for(Sprite s:sprites){
             s.draw(canvas);
@@ -44,6 +43,10 @@ public class DrawView extends View {
 
     public static void addSprite(){
         sprites.add(new Sprite());
+    }
+
+    public static void clear() {
+        sprites.clear();
     }
 
 
