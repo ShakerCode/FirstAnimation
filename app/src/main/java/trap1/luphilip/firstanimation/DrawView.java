@@ -1,6 +1,7 @@
 package trap1.luphilip.firstanimation;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -15,7 +16,10 @@ import java.util.ArrayList;
 
 public class DrawView extends View {
     Paint paint=new Paint();
+    private static int width = 0;
+
     public Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.space_background);
+//    public  Bitmap dk = BitmapFactory.decodeResource(getResources(), R.drawable.donkey_kong);
     public static ArrayList<Sprite> sprites= new ArrayList<>();
     public DrawView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -27,8 +31,17 @@ public class DrawView extends View {
 
         paint.setColor(Color.GRAY);//set paint to gray
 
-        for(Sprite s:sprites){
+        for(Sprite s: sprites){
             s.draw(canvas);
+            if(sprites.size() > 1) {
+                for(Sprite k: sprites) {
+                    if(!k.equals(s)) {
+                        k.checkIntersect(s);
+                    }
+
+                }
+            }
+
         }
 
         invalidate();  //redraws screen, invokes onDraw()

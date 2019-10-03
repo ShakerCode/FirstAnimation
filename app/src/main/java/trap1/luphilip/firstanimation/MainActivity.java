@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.*;
 import android.os.Bundle;
@@ -47,11 +48,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DrawView.addSprite();
+                circleButton.setEnabled(false);
+                delayTimer.start();
             }
         });
 
 
     }
+
+    CountDownTimer delayTimer = new CountDownTimer(500, 500) {
+        @Override
+        public void onTick(long l) {
+
+        }
+
+        @Override
+        public void onFinish() {
+            circleButton.setEnabled(true);
+        }
+    };
 
 
 }
