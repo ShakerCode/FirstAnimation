@@ -30,7 +30,6 @@ public class DrawView extends View {
         super.onDraw(canvas);
 
         paint.setColor(Color.GRAY);//set paint to gray
-
         for(Sprite s: sprites){
             s.draw(canvas);
             if(sprites.size() > 1) {
@@ -38,10 +37,8 @@ public class DrawView extends View {
                     if(!k.equals(s)) {
                         k.checkIntersect(s);
                     }
-
                 }
             }
-
         }
 
         invalidate();  //redraws screen, invokes onDraw()

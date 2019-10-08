@@ -31,7 +31,7 @@ class Sprite extends RectF {
     }
 
     public Sprite() {
-        super(0,0,200,200);
+        super(200,200,400,400);
         this.dx = 10;
         this.dy = 10;
         this.paint = new Paint();
@@ -43,37 +43,28 @@ class Sprite extends RectF {
 //        canvas.drawBitmap(dk, 0, 0, null);
         canvas.drawCircle(centerX(),centerY(),radius, paint);
         offset(dx,dy);
-        if(right + dx >= canvas.getWidth() ) {
+        if(right + dx >= canvas.getWidth()) {
             dx*=-1;
         }
         else if(left + dx <=0) {
             dx*=-1;
         }
-        if(bottom + dy>= canvas.getHeight()) {
+        if(top + dy>= canvas.getHeight() - radius) {
             dy*=-1;
         }
-        else if(bottom + dy <=0) {
+        else if(bottom + dy <=radius) {
             dy*=-1;
         }
     }
 
     public void checkIntersect(Sprite s) {
-        if(RectF.intersects(this, s)) {
-//            if((Math.pow(s.getDx(), s.getDx()) < 0)) {
-//                this.setDx(this.getDx() - 1);
-//                s.setDx(s.getDx() * -1);
-//            }
-//            if((Math.pow(s.getDy(), s.getDy()) < 0)) {
-//                this.setDy(this.getDy() - 1);
-//                s.setDy(s.getDy() * -1);
-//            }
             this.setDx(this.getDx()*-1);
             this.setDy(this.getDy()*-1);
             s.setDx(s.getDx()*-1);
             s.setDy(s.getDy()*-1);
             //FIX
         }
-    }
+
 
     public void update() {
         this.paint.setColor(randomColor);
